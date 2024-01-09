@@ -10,19 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Desktop_app
+namespace Desktop_app.Windows
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logika interakcji dla klasy RegisterSuccessWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RegisterSuccessWindow : Window
     {
-        public MainWindow()
+        public async void TheEnclosingMethod()
         {
+
+            await Task.Delay(2000);
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
+        }
+        public RegisterSuccessWindow()
+        {
+            
             InitializeComponent();
+            TheEnclosingMethod();
+
         }
     }
 }

@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Robert\Downloads\Desktop-app\App.xaml
-1219584333
+4-772847133
 
-51579654133
+81955873803
 16-2070677711
-MainWindow.xaml;
+Windows\HomeWindow.xaml;Windows\LoginWindow.xaml;Windows\RegisterSuccessWindow.xaml;Windows\RegisterWindow.xaml;
 
 False
 
