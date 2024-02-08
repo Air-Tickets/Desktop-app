@@ -71,23 +71,48 @@
 
 
 
-                    <StackPanel Grid.Column="1" Height="950">
-                        <Grid>
+                    <StackPanel Margin="100 0 0 0" Grid.Column="1" Height="950">
+                        <Grid Margin="0 0 0 20">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="80"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+
                             </Grid.RowDefinitions>
-                            <Button Grid.Row="0" Width="50" Height="50" HorizontalAlignment="Right" Margin="15" Padding="0"  Background="Transparent">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="300"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Row="0" Grid.Column="2" Width="50" Height="50" HorizontalAlignment="Right" Margin="15" Padding="0"  Background="Transparent">
                                 <Image Source="/exit.png" Stretch="Fill"/>
                             </Button>
-                            <StackPanel Grid.Row="1">
-                                <TextBlock FontSize="50">Imie</TextBlock>
+                            <StackPanel Margin="50 0 0 20" Grid.Row="1" Grid.ColumnSpan="2">
+                                <TextBlock FontSize="50">Buy Ticket</TextBlock>
                             </StackPanel>
+                            <TextBlock VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="2" Text="Name:" FontSize="25" Height="40" Margin="0 0 0 20"/>
+                            <TextBox x:Name="Name_text" Grid.Column="1" Grid.Row="2" Margin="0 0 0 20" Width="300" FontSize="25"/>
+                            <TextBlock VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="3" Text="Surname:" FontSize="25" Height="40" Margin="0 0 0 20"/>
+                            <TextBox x:Name="Surname_text" Grid.Column="1" Grid.Row="3" Margin="0 0 0 20" Width="300" FontSize="25"/>
+                            <TextBlock VerticalAlignment="Bottom" Grid.Column="0" Grid.Row="4" Text="PESEL:" FontSize="25" Height="40" Margin="0 0 0 20"/>
+                            <TextBox x:Name="Pesel_text" Grid.Column="1" Grid.Row="4" Margin="0 0 0 20" Width="300" FontSize="25"/>
+                            <TextBlock VerticalAlignment="Bottom" Text="Selcected Flight:" Grid.Column="0" Grid.Row="5" FontSize="25" Height="40" Margin="0 10 0 0"/>
+                            <TextBlock x:Name="SelcectedSeat_text" Text="" Grid.Column="1" Grid.Row="5" FontSize="25" Height="40" Margin="0 0 0 0"/>
+                            <Button x:Name="SelcetFlight_btn"  Grid.ColumnSpan="2" Grid.Row="6" Content="Select Flight" FontSize="25" Margin="0 0 0 10" Height="50" BorderThickness="25" BorderBrush="#000000" Background="Black" Foreground="White" Cursor="Hand"/>
+                            <TextBlock VerticalAlignment="Bottom" Text="Selcected Seat:" Grid.Column="0" Grid.Row="7" FontSize="25" Height="40" Margin="0 20 0 0"/>
+                            <TextBlock x:Name="SelcectedFlight_text" Text="" Grid.Column="1" Grid.Row="7" FontSize="25" Height="40" Margin="0 20 0 0"/>
+                            <Button x:Name="SelcetSeat_btn"  Grid.ColumnSpan="2" Grid.Row="8" Content="Select Seat" FontSize="25" Margin="0 0 0 10" Height="50" BorderThickness="25" BorderBrush="#000000" Background="Black" Foreground="White" Cursor="Hand"/>
+                            <CheckBox x:Name="AditionalBagage_checkbox" Content="Do u want additional bagage?" Grid.Row="9" Grid.ColumnSpan="2" FontSize="25" Background="#fa332c"/>
                         </Grid>
-                        
+                        <Button Margin="0 50 100 10"  Content="Confirm" FontSize="25" Height="50" BorderThickness="25" BorderBrush="#fa332c" Background="#fa332c" Foreground="White" Cursor="Hand"/>
+
                     </StackPanel>
                 </Grid>
 
