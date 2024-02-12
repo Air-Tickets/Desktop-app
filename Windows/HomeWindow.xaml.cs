@@ -23,8 +23,13 @@ namespace Desktop_app
         {
             InitializeComponent();
             Console.WriteLine(userId);
+            
         }
 
-
+        private void SelcetFlight_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.Select_seat select_Seat = new Windows.Select_seat();
+            select_Seat.Show();
+        }
     }
 }
