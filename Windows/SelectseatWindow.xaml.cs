@@ -49,7 +49,17 @@ namespace Desktop_app.Windows
             this.DataContext = MyList;
 
         }
-        
+        private void onSeatClick(object sender, RoutedEventArgs e)
+        {
+            if(sender is Button)
+            {
+                Button button = sender as Button;
+                Console.WriteLine(button.Content.ToString());
+                
+            }
+            
+        }
+
 
     }
 }

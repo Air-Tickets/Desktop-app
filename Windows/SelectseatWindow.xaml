@@ -17,7 +17,7 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding}" Margin="0,0,5,5" Width="100" Background="Aqua"/>
+                        <Button x:Name="a" Content="{Binding}" Margin="0,0,5,5" Width="100" Background="Aqua" Click="onSeatClick"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
 

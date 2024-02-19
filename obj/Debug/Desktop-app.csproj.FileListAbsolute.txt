@@ -127,3 +127,5 @@ C:\Users\Uczen\Downloads\git\Desktop-app\obj\Debug\Desktop-app.csproj.CoreCompil
 C:\Users\Uczen\Downloads\git\Desktop-app\obj\Debug\Desktop-app.csproj.CopyComplete
 C:\Users\Uczen\Downloads\git\Desktop-app\obj\Debug\Desktop-app.exe
 C:\Users\Uczen\Downloads\git\Desktop-app\obj\Debug\Desktop-app.pdb
+C:\Users\Uczen\Downloads\git\Desktop-app\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Uczen\Downloads\git\Desktop-app\bin\Debug\Newtonsoft.Json.xml

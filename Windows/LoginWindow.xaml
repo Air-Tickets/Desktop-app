@@ -12,6 +12,7 @@
         AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
+        
         >
     <materialDesign:Card UniformCornerRadius="15" Background="#FD9996" Margin="25" >
         <materialDesign:DialogHost CloseOnClickAway="True" x:Name="DialogHost">

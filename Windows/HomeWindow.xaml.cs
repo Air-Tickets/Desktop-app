@@ -19,17 +19,36 @@ namespace Desktop_app
     /// </summary>
     public partial class HomeWindow : Window
     {
-        public HomeWindow(int userId)
+        public HomeWindow(User user)
         {
             InitializeComponent();
-            Console.WriteLine(userId);
-            
+            Console.WriteLine();
+            TextBlock welcome_text = Welcome_text;
+            welcome_text.Text = "Welcome " + user.Imie + "!";
+            TextBox name_text = Name_text;
+            TextBox surname_text = Surname_text;
+            TextBox pesel_text = Pesel_text;
+            name_text.Text = user.Imie;
+            surname_text.Text = user.Nazwisko;
+            pesel_text.Text=user.PESEL;
         }
 
         private void SelcetFlight_btn_Click(object sender, RoutedEventArgs e)
         {
-            Windows.Select_seat select_Seat = new Windows.Select_seat();
-            select_Seat.Show();
+            TextBlock selcectedFlight_text = SelcectedFlight_text;
+            if (selcectedFlight_text.Text != "")
+            {
+                Windows.Select_seat select_Seat = new Windows.Select_seat();
+                select_Seat.Show();
+            }
+            else
+            {
+                string messageBoxText = "NO flight chosen";
+                string caption = "AMELKA";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Exclamation;
+                MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
+            }
         }
     }
 }

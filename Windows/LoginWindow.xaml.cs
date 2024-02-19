@@ -16,6 +16,7 @@ using System.IO;
 
 using System.Diagnostics;
 using Desktop_app.Windows;
+using System.Net.Http;
 
 namespace Desktop_app
 {
@@ -26,6 +27,8 @@ namespace Desktop_app
         static string filepath = path + @"\loginInfo.txt";
         public MainWindow()
         {
+            this.Visibility = Visibility.Hidden;
+            User user = new User();
             InitializeComponent();
             if (File.Exists(filepath))
             {
@@ -33,21 +36,33 @@ namespace Desktop_app
                 {
                     string login = sr.ReadLine();
                     string pass = sr.ReadLine();
-                    int userId = 1;
-                //Send to Api request for user id.
-                    if (userId != 0)
-                    {
-                        HomeWindow homeWindow = new HomeWindow(userId);
-                        homeWindow.Show();
-                        this.Close();
-                    }
-                    else
-                    {
-                        ErrorMessage.Text = "wrong email or password";
-                    }
+                    loggin(login, pass);
                 }
             }
-
+            else
+            {
+                this.Visibility = Visibility.Visible;
+            }
+        }
+        private async void loggin(string login, string password)
+        {
+            User user = new User();
+            var client = new HttpClient();
+            var stringContent = new StringContent(password);
+            var response = await client.PostAsync("http://192.168.1.105:8080/api/account/login/" + login, stringContent);
+            var jsonRespone = await response.Content.ReadAsStringAsync();
+            if (jsonRespone == "")
+            {
+                ErrorMessage.Text = "wrong email or password";
+            }
+            else
+            {
+                user = new User(jsonRespone.ToString());
+                Console.WriteLine(jsonRespone.ToString());
+                HomeWindow homeWindow = new HomeWindow(user);
+                homeWindow.Show();
+                this.Close();
+            }
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
@@ -57,18 +72,28 @@ namespace Desktop_app
             this.Close();
         }
 
-        private void loginButton_Click(object sender, RoutedEventArgs e)
+        private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
+            User user = new User();
             string login = email.Text;
             string pass = password.Password.ToString();
             bool stayLogged = StayLogged.IsChecked == true;
-            int userId = 1;
             if(pass.Length > 0 && login.Length > 0)
             {
-        //Send to Api request for user id.
-                if (userId != 0)
+                var client = new HttpClient();
+                var stringContent = new StringContent(pass);
+                var response = await client.PostAsync("http://192.168.1.105:8080/api/account/login/" + login, stringContent);
+                var jsonRespone = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(jsonRespone);
+                if (jsonRespone == "")
                 {
-                    HomeWindow homeWindow = new HomeWindow(userId);
+                    ErrorMessage.Text = "Wrong email or password";
+                    password.Password = null;
+                }
+                else
+                {
+                    user = new User(jsonRespone.ToString());
+                    HomeWindow homeWindow = new HomeWindow(user);
                     homeWindow.Show();
                     this.Close();
 
@@ -85,11 +110,6 @@ namespace Desktop_app
                                     sw.WriteLine(login);
                                     sw.WriteLine(pass);
                                 }
-                                //Console.WriteLine("The file was created successfully");
-
-                                // Delete the directory.
-                                /*di.Delete();
-                                Console.WriteLine("The directory was deleted successfully.");*/
                             }
                         }
                         catch (Exception ez)
@@ -108,11 +128,6 @@ namespace Desktop_app
                             }
                         }
                     }
-                }
-                else
-                {
-                    ErrorMessage.Text = "Wrong email or password";
-                    password.Password = null;
                 }
             }
             else
