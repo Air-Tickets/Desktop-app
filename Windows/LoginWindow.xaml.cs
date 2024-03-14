@@ -49,7 +49,7 @@ namespace Desktop_app
             User user = new User();
             var client = new HttpClient();
             var stringContent = new StringContent(password);
-            var response = await client.PostAsync("http://192.168.1.105:8080/api/account/login/" + login, stringContent);
+            var response = await client.PostAsync("http://172.31.111.124:8080/api/account/login/" + login, stringContent);
             var jsonRespone = await response.Content.ReadAsStringAsync();
             if (jsonRespone == "")
             {
@@ -82,9 +82,9 @@ namespace Desktop_app
             {
                 var client = new HttpClient();
                 var stringContent = new StringContent(pass);
-                var response = await client.PostAsync("http://192.168.1.105:8080/api/account/login/" + login, stringContent);
+                var response = await client.PostAsync("http://172.31.111.124:8080/api/account/login/" + login, stringContent);
                 var jsonRespone = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(jsonRespone);
+                //Console.WriteLine(jsonRespone);
                 if (jsonRespone == "")
                 {
                     ErrorMessage.Text = "Wrong email or password";

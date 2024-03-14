@@ -33,7 +33,7 @@ namespace Desktop_app
             pesel_text.Text=user.PESEL;
         }
 
-        private void SelcetFlight_btn_Click(object sender, RoutedEventArgs e)
+        private void SelcetSeat_btn_Click(object sender, RoutedEventArgs e)
         {
             TextBlock selcectedFlight_text = SelcectedFlight_text;
             if (selcectedFlight_text.Text != "")
@@ -49,6 +49,12 @@ namespace Desktop_app
                 MessageBoxImage icon = MessageBoxImage.Exclamation;
                 MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
             }
+        }
+
+        private void SelcetFlight_btn_Click(object sender, RoutedEventArgs e)
+        {
+            Windows.FlightWindow flightWidnow = new Windows.FlightWindow();
+            flightWidnow.Show();
         }
     }
 }

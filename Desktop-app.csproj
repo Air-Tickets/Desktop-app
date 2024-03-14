@@ -69,8 +69,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="flight.cs" />
     <Compile Include="seat.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Windows\FlightWindow.xaml.cs">
+      <DependentUpon>FlightWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\RegisterSuccessWindow.xaml.cs">
       <DependentUpon>RegisterSuccessWindow.xaml</DependentUpon>
     </Compile>
@@ -80,6 +84,10 @@
     <Compile Include="Windows\SelectseatWindow.xaml.cs">
       <DependentUpon>SelectseatWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Windows\FlightWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\HomeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

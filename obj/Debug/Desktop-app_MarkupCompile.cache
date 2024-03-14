@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Uczen\Downloads\git\Desktop-app\obj\Debug\
+C:\Users\Uczen\Downloads\Desktop-app-main\Desktop-app-main\Desktop-app-main\obj\Debug\
 Desktop_app
 none
 false
 DEBUG;TRACE
-C:\Users\Uczen\Downloads\git\Desktop-app\App.xaml
-51998699659
+C:\Users\Uczen\Downloads\Desktop-app-main\Desktop-app-main\Desktop-app-main\App.xaml
+6912325564
 
-112054290191
-171041573954
-Windows\HomeWindow.xaml;Windows\LoginWindow.xaml;Windows\RegisterSuccessWindow.xaml;Windows\RegisterWindow.xaml;Windows\SelectseatWindow.xaml;
+13983398978
+1742564478
+Windows\FlightWindow.xaml;Windows\HomeWindow.xaml;Windows\LoginWindow.xaml;Windows\RegisterSuccessWindow.xaml;Windows\RegisterWindow.xaml;Windows\SelectseatWindow.xaml;
 
 False
 
