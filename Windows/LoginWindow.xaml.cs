@@ -22,6 +22,8 @@ namespace Desktop_app
 {
     public partial class MainWindow : Window
     {
+        public const string ApiIp = "192.168.0.113:8080";
+
         const string folderName = "desktop-app";
         static string path = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile).ToString() + @"\" + folderName;
         static string filepath = path + @"\loginInfo.txt";
@@ -49,7 +51,7 @@ namespace Desktop_app
             User user = new User();
             var client = new HttpClient();
             var stringContent = new StringContent(password);
-            var response = await client.PostAsync("http://172.31.111.124:8080/api/account/login/" + login, stringContent);
+            var response = await client.PostAsync("http://" + ApiIp + "/api/account/login/" + login, stringContent);
             var jsonRespone = await response.Content.ReadAsStringAsync();
             if (jsonRespone == "")
             {
@@ -59,7 +61,7 @@ namespace Desktop_app
             {
                 user = new User(jsonRespone.ToString());
                 Console.WriteLine(jsonRespone.ToString());
-                HomeWindow homeWindow = new HomeWindow(user);
+                HomeWindow homeWindow = new HomeWindow(user, ApiIp);
                 homeWindow.Show();
                 this.Close();
             }
@@ -82,7 +84,7 @@ namespace Desktop_app
             {
                 var client = new HttpClient();
                 var stringContent = new StringContent(pass);
-                var response = await client.PostAsync("http://172.31.111.124:8080/api/account/login/" + login, stringContent);
+                var response = await client.PostAsync("http://" + ApiIp + "/api/account/login/" + login, stringContent);
                 var jsonRespone = await response.Content.ReadAsStringAsync();
                 //Console.WriteLine(jsonRespone);
                 if (jsonRespone == "")
@@ -93,7 +95,7 @@ namespace Desktop_app
                 else
                 {
                     user = new User(jsonRespone.ToString());
-                    HomeWindow homeWindow = new HomeWindow(user);
+                    HomeWindow homeWindow = new HomeWindow(user, ApiIp);
                     homeWindow.Show();
                     this.Close();
 

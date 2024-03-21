@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace Desktop_app
 {
-    internal class flight
+    public class flight
     {
-        int id { get; set; }
-        string miejsce_startowe { get; set; }
-        string miejsce_docelowe { get; set; }
-        string data { get; set; }
-        string godzina_odlotu { get; set; }
-        string godzina_boardingu { get; set; }
-        string godzina_w_miejscu_docelowym { get; set; }
-        string przewoznik { get; set; }
-        int numer_lotu { get; set; }
-        int id_samolotu { get; set; }
-        int liczba_kupionych_biletow { get; set; }
-        int id_zalogi { get; set; }
+        public int id { get; set; }
+        public string miejsce_startowe { get; set; }
+        public string miejsce_docelowe { get; set; }
+        public string data { get; set; }
+        public string godzina_odlotu { get; set; }
+        public string godzina_boardingu { get; set; }
+        public string godzina_w_miejscu_docelowym { get; set; }
+        public string przewoznik { get; set; }
+        public int numer_lotu { get; set; }
+        public int id_samolotu { get; set; }
+        public int liczba_kupionych_biletow { get; set; }
+        public int id_zalogi { get; set; }
 
         public flight(int id, string miejsce_startowe, string miejsce_docelowe, string data, string godzina_odlotu, string godzina_boardingu, string godzina_w_miejscu_docelowym, string przewoznik, int numer_lotu, int id_samolotu, int liczba_kupionych_biletow, int id_zalogi)
         {

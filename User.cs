@@ -19,6 +19,7 @@ namespace Desktop_app
 
         public User(string str)
         {
+            //Console.WriteLine(str);
             JObject json = JObject.Parse(str);
             this.Id = (int)json["id"];
             this.Imie = (string)json["imie"];

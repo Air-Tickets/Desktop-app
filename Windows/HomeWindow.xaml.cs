@@ -19,8 +19,10 @@ namespace Desktop_app
     /// </summary>
     public partial class HomeWindow : Window
     {
-        public HomeWindow(User user)
+        string ApiIpThis;
+        public HomeWindow(User user, string ApiIp)
         {
+            ApiIpThis = ApiIp;
             InitializeComponent();
             Console.WriteLine();
             TextBlock welcome_text = Welcome_text;
@@ -32,6 +34,7 @@ namespace Desktop_app
             surname_text.Text = user.Nazwisko;
             pesel_text.Text=user.PESEL;
         }
+        
 
         private void SelcetSeat_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -53,7 +56,7 @@ namespace Desktop_app
 
         private void SelcetFlight_btn_Click(object sender, RoutedEventArgs e)
         {
-            Windows.FlightWindow flightWidnow = new Windows.FlightWindow();
+            Windows.FlightWindow flightWidnow = new Windows.FlightWindow(ApiIpThis);
             flightWidnow.Show();
         }
     }
