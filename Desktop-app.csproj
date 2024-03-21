@@ -69,6 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Windows\BoolToColorConverter.cs" />
     <Compile Include="flight.cs" />
     <Compile Include="seat.cs" />
     <Compile Include="User.cs" />

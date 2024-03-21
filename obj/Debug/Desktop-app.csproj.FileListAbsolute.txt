@@ -242,3 +242,5 @@ C:\Users\Robert\Downloads\20.03\Desktop-app\obj\Debug\Desktop-app.csproj.CoreCom
 C:\Users\Robert\Downloads\20.03\Desktop-app\obj\Debug\Desktop-.D46E28AC.Up2Date
 C:\Users\Robert\Downloads\20.03\Desktop-app\obj\Debug\Desktop-app.exe
 C:\Users\Robert\Downloads\20.03\Desktop-app\obj\Debug\Desktop-app.pdb
+C:\Users\Uczen\Downloads\git\Desktop-app\obj\Debug\Windows\FlightWindow.g.cs
+C:\Users\Uczen\Downloads\git\Desktop-app\obj\Debug\Windows\FlightWindow.baml

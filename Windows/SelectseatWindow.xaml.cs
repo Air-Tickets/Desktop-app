@@ -24,9 +24,9 @@ namespace Desktop_app.Windows
     public partial class Select_seat : Window
     {
 
-        public Select_seat()
+        public Select_seat(int selectedFlightId)
         {
-
+            Console.WriteLine(selectedFlightId);
             List<seat> MyCollection = new List<seat>();
 
             for(int i = 1; i <= 32; i++)
@@ -48,6 +48,13 @@ namespace Desktop_app.Windows
             Console.WriteLine(MyList[1]);
             this.DataContext = MyList;
 
+            Button foundButton = VisualTreeHelperExtensions.FindButtonByText(this, "1A");
+            Console.Write("lala" + foundButton);
+            if (foundButton != null)
+            {
+                foundButton.Background = Brushes.Red;
+                // Znaleziono przycisk, można wykonać dalsze działania...
+            }
         }
         private void onSeatClick(object sender, RoutedEventArgs e)
         {
@@ -60,6 +67,33 @@ namespace Desktop_app.Windows
             
         }
 
+        public static class VisualTreeHelperExtensions
+        {
+            public static Button FindButtonByText(DependencyObject parent, string text)
+            {
+                if (parent == null) return null;
+
+                int childCount = VisualTreeHelper.GetChildrenCount(parent);
+                for (int i = 0; i < childCount; i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(parent, i);
+                    Button button = child as Button;
+
+                    if (button != null && button.Content != null && button.Content.ToString() == text)
+                    {
+                        return button;
+                    }
+
+                    Button foundButton = FindButtonByText(child, text);
+                    if (foundButton != null)
+                    {
+                        return foundButton;
+                    }
+                }
+
+                return null;
+            }
+        }
 
     }
 }

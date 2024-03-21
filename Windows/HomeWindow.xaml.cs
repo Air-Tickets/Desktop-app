@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace Desktop_app
 {
@@ -19,9 +20,11 @@ namespace Desktop_app
     /// </summary>
     public partial class HomeWindow : Window
     {
+        public static flight flightSelceted;
         string ApiIpThis;
         public HomeWindow(User user, string ApiIp)
         {
+            
             ApiIpThis = ApiIp;
             InitializeComponent();
             Console.WriteLine();
@@ -41,7 +44,7 @@ namespace Desktop_app
             TextBlock selcectedFlight_text = SelcectedFlight_text;
             if (selcectedFlight_text.Text != "")
             {
-                Windows.Select_seat select_Seat = new Windows.Select_seat();
+                Windows.Select_seat select_Seat = new Windows.Select_seat(flightSelceted.id);
                 select_Seat.Show();
             }
             else
@@ -53,11 +56,20 @@ namespace Desktop_app
                 MessageBox.Show(messageBoxText, caption, button, icon, MessageBoxResult.Yes);
             }
         }
-
         private void SelcetFlight_btn_Click(object sender, RoutedEventArgs e)
         {
             Windows.FlightWindow flightWidnow = new Windows.FlightWindow(ApiIpThis);
             flightWidnow.Show();
+            flightWidnow.Closing += FlightWidnow_Closing;
+            //Console.WriteLine(flightIdSelceted);
         }
+
+        private void FlightWidnow_Closing(object sender, CancelEventArgs e)
+        {
+            TextBlock selcectedFlight_text = SelcectedFlight_text;
+            selcectedFlight_text.Text = flightSelceted.numer_lotu + ": " + flightSelceted.miejsce_startowe + " -> " + flightSelceted.miejsce_docelowe;
+        }
+
+
     }
 }

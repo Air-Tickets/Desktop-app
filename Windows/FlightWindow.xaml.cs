@@ -87,15 +87,17 @@ namespace Desktop_app.Windows
 
         }
         private void SelectButton_Click(object sender, RoutedEventArgs e)
-    {
-        // Pobierz wiersz (lot) powiązany z guzikiem
-        var button = sender as Button;
-        var dataGridRow = FindAncestor<DataGridRow>(button);
-        var selectedFlight = (flight)dataGridRow.Item;
+        {
+            // Pobierz wiersz (lot) powiązany z guzikiem
+            var button = sender as Button;
+            var dataGridRow = FindAncestor<DataGridRow>(button);
+            var selectedFlight = (flight)dataGridRow.Item;
 
-        // Tutaj możesz wykonać dowolne działania związane z wybranym lotem
-        Console.WriteLine("Wybrano lot o ID: " + selectedFlight.id);
-    }
+            // Tutaj możesz wykonać dowolne działania związane z wybranym lotem
+            Console.WriteLine("Wybrano lot o ID: " + selectedFlight.id);
+            HomeWindow.flightSelceted = selectedFlight;
+            this.Close();
+        }
 
     private T FindAncestor<T>(DependencyObject current) where T : DependencyObject
     {
