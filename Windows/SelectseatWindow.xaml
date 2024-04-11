@@ -4,13 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:system="clr-namespace:System;assembly=mscorlib"
-        xmlns:local="clr-namespace:Desktop_app.Windows"
+        xmlns:local="clr-namespace:Desktop_app.Windows" 
+        xmlns:local1="clr-namespace:Desktop_app"
         mc:Ignorable="d"
         Title="Select_seat" Height="350" Width="800">
-        <Window.Resources>
-            <local:BoolToColorConverter x:Key="BoolToColorConverter" />
-        </Window.Resources>
 
+    <Window.Resources>
+        <local1:BoolToColorConverter x:Key="BoolToColorConverter"/>
+    </Window.Resources>
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
             <ItemsControl ItemsSource="{Binding}">
@@ -21,8 +22,10 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding SeatName}" Margin="0,0,5,5" Width="100" Background="{Binding IsTaken, Converter={StaticResource BoolToColorConverter}}"
-                    Click="onSeatClick"/>
+                        <Button Content="{Binding SeatName}" Margin="0,0,5,5" Width="100" Click="onSeatClick"
+                                Background="{Binding IsTaken, Converter={StaticResource BoolToColorConverter}}"
+                                IsEnabled="{Binding IsNotTaken}"
+                                />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,9 +25,11 @@ namespace Desktop_app.Windows
 
     public partial class Select_seat : Window
     {
+        List<string> Takenseats = new List<string>();
 
-        public Select_seat(int selectedFlightId)
+        public Select_seat(int selectedFlightId, string ApiIp)
         {
+            selectedSeats(ApiIp, selectedFlightId);
             Console.WriteLine(selectedFlightId);
             List<seat> MyCollection = new List<seat>();
 
@@ -45,11 +49,11 @@ namespace Desktop_app.Windows
             }
 
             InitializeComponent();
-            Console.WriteLine(MyList[1]);
-            this.DataContext = MyList;
+            //Console.WriteLine(MyList[1]);
+            this.DataContext = MyCollection;
 
             Button foundButton = VisualTreeHelperExtensions.FindButtonByText(this, "1A");
-            Console.Write("lala" + foundButton);
+            //Console.Write("lala" + foundButton);
             if (foundButton != null)
             {
                 foundButton.Background = Brushes.Red;
@@ -94,6 +98,19 @@ namespace Desktop_app.Windows
                 return null;
             }
         }
-
+        public async void selectedSeats(string ApiIp, int idLotu)
+        {
+            List<string> selectedSeatsList = new List<string>();
+            var client = new HttpClient();
+            var response = await client.GetAsync("http://" + ApiIp + "/api/ticket/takenSeats/" + idLotu);
+            var jsonRespone = await response.Content.ReadAsStringAsync();
+            JArray json = JArray.Parse(jsonRespone);
+            foreach (var item in json)
+            {
+                selectedSeatsList.Add(item.ToString());
+            }
+            Takenseats = selectedSeatsList;
+        }
     }
 }
+

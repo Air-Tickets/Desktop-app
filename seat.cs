@@ -10,11 +10,12 @@ namespace Desktop_app
     {
         public string SeatName { get; set; }
         public bool IsTaken { get; set; }
-
+        public bool IsNotTaken { get; set; }
         public seat(string seatName, bool isTaken)
         {
             SeatName = seatName;
             IsTaken = isTaken;
+            IsNotTaken = !isTaken;
         }
     }
 }

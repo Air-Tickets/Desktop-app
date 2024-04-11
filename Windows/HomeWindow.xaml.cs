@@ -44,7 +44,7 @@ namespace Desktop_app
             TextBlock selcectedFlight_text = SelcectedFlight_text;
             if (selcectedFlight_text.Text != "")
             {
-                Windows.Select_seat select_Seat = new Windows.Select_seat(flightSelceted.id);
+                Windows.Select_seat select_Seat = new Windows.Select_seat(flightSelceted.id, ApiIpThis);
                 select_Seat.Show();
             }
             else
