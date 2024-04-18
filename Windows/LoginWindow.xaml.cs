@@ -22,7 +22,7 @@ namespace Desktop_app
 {
     public partial class MainWindow : Window
     {
-        public const string ApiIp = "172.31.111.135:8080";
+        public const string ApiIp = "172.31.111.124:8080";
 
         const string folderName = "desktop-app";
         static string path = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile).ToString() + @"\" + folderName;

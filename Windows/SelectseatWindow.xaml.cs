@@ -26,12 +26,11 @@ namespace Desktop_app.Windows
     public partial class Select_seat : Window
     {
         List<string> Takenseats = new List<string>();
-
+        List<seat> MyCollection = new List<seat>();
         public Select_seat(int selectedFlightId, string ApiIp)
         {
             selectedSeats(ApiIp, selectedFlightId);
             Console.WriteLine(selectedFlightId);
-            List<seat> MyCollection = new List<seat>();
 
             for(int i = 1; i <= 32; i++)
             {
@@ -43,14 +42,16 @@ namespace Desktop_app.Windows
                 MyCollection.Add(new seat(i + "F", false));
             }
             List<string> MyList = new List<string>();
-            foreach(seat seat in MyCollection)
+            foreach (seat seat in MyCollection)
             {
                 MyList.Add(seat.SeatName);
             }
+            
+
+            
 
             InitializeComponent();
             //Console.WriteLine(MyList[1]);
-            this.DataContext = MyCollection;
 
             Button foundButton = VisualTreeHelperExtensions.FindButtonByText(this, "1A");
             //Console.Write("lala" + foundButton);
@@ -65,7 +66,8 @@ namespace Desktop_app.Windows
             if(sender is Button)
             {
                 Button button = sender as Button;
-                Console.WriteLine(button.Content.ToString());
+                var seat = button.Content.ToString();
+                HomeWindow.
                 
             }
             
@@ -110,6 +112,14 @@ namespace Desktop_app.Windows
                 selectedSeatsList.Add(item.ToString());
             }
             Takenseats = selectedSeatsList;
+            Console.WriteLine(Takenseats.Count);
+            for (int z = 0; z < Takenseats.Count; z++)
+            {
+                int a = MyCollection.FindIndex(x => x.SeatName.Contains(Takenseats[z]));
+                MyCollection[a] = new seat(Takenseats[z], true);
+                Console.WriteLine(MyCollection[a].IsTaken);
+                this.DataContext = MyCollection;
+            }
         }
     }
 }
